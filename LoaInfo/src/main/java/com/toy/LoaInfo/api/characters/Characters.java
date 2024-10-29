@@ -9,13 +9,13 @@ import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
 import com.toy.LoaInfo.api.controller.APIController;
-import com.toy.LoaInfo.api.siblings.SiblingsDTO;
+import com.toy.LoaInfo.api.dto.Siblings;
 
 public class Characters extends APIController {
 	// 캐릭터명으로 검색하여 원정대 내 캐릭터 정보 확인
-		public List<SiblingsDTO> characters(String _charName) throws ParseException {
+		public List<Siblings> characters(String _charName) throws ParseException {
 			// 값전달용 리스트 선언
-			List<SiblingsDTO> siblingsList = new ArrayList<>();
+			List<Siblings> siblingsList = new ArrayList<>();
 
 			String charName = _charName;
 			String category = "characters";
@@ -32,7 +32,7 @@ public class Characters extends APIController {
 					// JSONArray를 JSONObject로 변환
 					JSONObject apiResultObj = (JSONObject) apiResult.get(i);
 
-					SiblingsDTO siblingsDTO = new SiblingsDTO();
+					Siblings siblingsDTO = new Siblings();
 
 					// DTO 값 세팅
 					siblingsDTO.setServerName(apiResultObj.get("ServerName").toString());

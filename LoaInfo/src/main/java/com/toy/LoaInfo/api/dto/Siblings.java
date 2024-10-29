@@ -1,10 +1,10 @@
-package com.toy.LoaInfo.api.siblings;
+package com.toy.LoaInfo.api.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter @Setter
-public class SiblingsDTO {
+public class Siblings {
 	private String serverName;
 	private String characterName;
 	private Integer characterLevel;
