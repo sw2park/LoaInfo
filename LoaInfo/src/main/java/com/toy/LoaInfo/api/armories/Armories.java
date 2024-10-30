@@ -9,17 +9,21 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.toy.LoaInfo.api.controller.APIController;
+import com.toy.LoaInfo.api.dto.ProfileDTO;
 
 public class Armories extends APIController {
 	// Armories 전체 API 검색
-	public void armories(String _charName) throws ParseException {
+	public void armories(String _charName) throws ParseException, JsonMappingException, JsonProcessingException {
 		String charName = _charName;
 		String category = "armories/characters";
 		String cateDetail = "";
 
 		String apiData = callInfoAPI(category, charName, cateDetail);
-
+		
 		if (!apiData.contentEquals("[]")) {
 			// JSONObject로 변환
 			JSONObject apiResult = (JSONObject) new JSONParser().parse(apiData);
@@ -54,37 +58,17 @@ public class Armories extends APIController {
 		}
 	}
 	
-	// ArmoryProfile 프로필 부분
-	public void profile(JSONObject profileObj) throws ParseException {
-		JSONObject profile = profileObj;
+	// DTO로 변환하는 부분
+	public ProfileDTO profile(JSONObject profileObj) throws JsonMappingException, JsonProcessingException {
+		ProfileDTO pDto = new ProfileDTO();		// DTO 객체 선언
+		ObjectMapper objMapper = new ObjectMapper();	// JSON DTO 오토 매핑용 객체 선언
 		
-		// key profile 세팅
-		List<String> keyList = new ArrayList<>();
-		keyList.add("CharacterImage");
-		keyList.add("ExpeditionLevel");
-		keyList.add("PvpGradeName");
-		keyList.add("TownLevel");
-		keyList.add("TownName");
-		keyList.add("Title");
-		keyList.add("GuildMemberGrade");
-		keyList.add("GuildName");
-		keyList.add("UsingSkillPoint");
-		keyList.add("TotalSkillPoint");
-		keyList.add("Stats");
-		keyList.add("Tendencies");
-		keyList.add("ServerName");
-		keyList.add("CharacterName");
-		keyList.add("CharacterLevel");
-		keyList.add("CharacterClassName");
-		keyList.add("ItemAvgLevel");
-		keyList.add("ItemMaxLevel");
+		// ObjectMapper 사용해서 DTO 오토 매핑시작 
+		pDto = objMapper.readValue(profileObj.toString(), ProfileDTO.class);
 		
-//		profileMap.put("CharacterImage", profile.get("CharacterImage"));
+		System.out.println(pDto.getCharacterName());
 		
-		for(int i=0; i<18; i++) {
-			// 이걸 어케해야할까
-			System.out.println(profile.get(keyList.get(i)).equals(profileObj).toString());
-		}
+		return pDto;
 	}
 	
 	// ArmoryEquipment 장착 아이템
