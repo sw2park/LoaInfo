@@ -1,5 +1,7 @@
 package com.toy.LoaInfo.api.dto;
 
+import java.util.List;
+
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -57,10 +59,9 @@ public class ProfileDTO {
 	@JsonProperty("ItemMaxLevel")
 	private String itemMaxLevel;
 	
-	// 객체배열이므로 추후 추가 예정
-//	@JsonProperty("Stats")
-//	private String stats;
+	@JsonProperty("Stats")
+	private List<StatsDTO> stats;
 	
-//	@JsonProperty("Tendencies")
-//	private String tendencies;
+	@JsonProperty("Tendencies")
+	private List<TendenciesDTO> tendencies;
 }

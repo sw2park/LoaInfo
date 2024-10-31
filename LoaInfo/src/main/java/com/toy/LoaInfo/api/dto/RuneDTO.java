@@ -1,7 +1,5 @@
 package com.toy.LoaInfo.api.dto;
 
-import java.util.List;
-
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -10,13 +8,16 @@ import lombok.Setter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter @Setter
-public class StatsDTO {
-	@JsonProperty("Type")
-	private String type;
+public class RuneDTO {
+	@JsonProperty("Name")
+	private String name;
 	
-	@JsonProperty("Value")
-	private String value;
+	@JsonProperty("Icon")
+	private String icon;
+	
+	@JsonProperty("Grade")
+	private String grade;
 	
 	@JsonProperty("Tooltip")
-	private List<String> toolTip;
+	private String tooltip;
 }

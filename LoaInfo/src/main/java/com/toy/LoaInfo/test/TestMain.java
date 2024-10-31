@@ -1,7 +1,6 @@
 package com.toy.LoaInfo.test;
 
-import java.text.ParseException;
-import java.util.List;
+import org.json.simple.parser.ParseException;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
@@ -22,7 +21,7 @@ public class TestMain {
 		Armories a = new Armories();
 		try {
 			a.armories(charName);
-		} catch (org.json.simple.parser.ParseException e) {
+		} catch (ParseException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
