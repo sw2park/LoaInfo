@@ -1,6 +1,4 @@
-package com.toy.LoaInfo.api.dto;
-
-import java.util.List;
+package com.toy.LoaInfo.api.dto.skill;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -10,28 +8,25 @@ import lombok.Setter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter @Setter
-public class SkillDTO {
+public class TripodsDTO {
+	@JsonProperty("Tier")
+	private Integer tier;
+	
+	@JsonProperty("Slot")
+	private Integer slot;
+	
 	@JsonProperty("Name")
 	private String name;
-
+	
 	@JsonProperty("Icon")
 	private String icon;
 	
 	@JsonProperty("Level")
 	private Integer level;
 	
-	@JsonProperty("Type")
-	private String type;
-	
-	@JsonProperty("SkillType")
-	private Integer skillType;
+	@JsonProperty("IsSelected")
+	private boolean isSelected;
 	
 	@JsonProperty("Tooltip")
 	private String tooltip;
-	
-	@JsonProperty("Tripods")
-	private List<TripodsDTO> tripods;
-	
-	@JsonProperty("Rune")
-	private RuneDTO rune;
 }

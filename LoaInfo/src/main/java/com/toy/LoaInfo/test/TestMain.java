@@ -6,11 +6,13 @@ import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.toy.LoaInfo.api.armories.Armories;
 import com.toy.LoaInfo.api.controller.LostarkApi;
+import com.toy.LoaInfo.api.gamecontents.GameContents;
+import com.toy.LoaInfo.api.gamecontents.challengeAbyss.ChallengeAbyss;
 
 public class TestMain {
-	public static void main(String[] args) throws JsonMappingException, JsonProcessingException {
+	public static void main(String[] args) throws JsonMappingException, JsonProcessingException, ParseException {
 		LostarkApi loaApi = new LostarkApi();
-		String charName = "하린슬레";
+		String charName = "드미이잉";
 		// List<SiblingsDTO> testData = loaApi.siblings(charName);
 		//
 		// for(SiblingsDTO m : testData) {
@@ -18,12 +20,15 @@ public class TestMain {
 		// }
 		
 		//loaApi.armories(charName);
-		Armories a = new Armories();
-		try {
-			a.armories(charName);
-		} catch (ParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+//		Armories a = new Armories();
+//		try {
+//			a.armories(charName);
+//		} catch (ParseException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
+		
+		ChallengeAbyss c = new ChallengeAbyss();
+		c.ChallengeAbyss();
 	}
 }

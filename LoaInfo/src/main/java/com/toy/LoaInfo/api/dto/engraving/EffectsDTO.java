@@ -1,4 +1,4 @@
-package com.toy.LoaInfo.api.dto;
+package com.toy.LoaInfo.api.dto.engraving;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,16 +8,13 @@ import lombok.Setter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter @Setter
-public class RuneDTO {
-	@JsonProperty("Name")
-	private String name;
-	
+public class EffectsDTO {
 	@JsonProperty("Icon")
 	private String icon;
 	
-	@JsonProperty("Grade")
-	private String grade;
+	@JsonProperty("Name")
+	private String name;
 	
-	@JsonProperty("Tooltip")
-	private String tooltip;
+	@JsonProperty("Description")
+	private String description;
 }

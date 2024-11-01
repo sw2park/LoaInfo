@@ -1,4 +1,6 @@
-package com.toy.LoaInfo.api.dto;
+package com.toy.LoaInfo.api.dto.gem;
+
+import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
@@ -8,24 +10,21 @@ import lombok.Setter;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 @Getter @Setter
-public class TripodsDTO {
-	@JsonProperty("Tier")
-	private Integer tier;
-	
-	@JsonProperty("Slot")
-	private Integer slot;
+public class GemSkillsDTO {
+	@JsonProperty("GemSlot")
+	private Integer gemSlot;
 	
 	@JsonProperty("Name")
 	private String name;
 	
+	@JsonProperty("Description")
+	private List<String> description;
+	
+	@JsonProperty("Option")
+	private String option;
+	
 	@JsonProperty("Icon")
 	private String icon;
-	
-	@JsonProperty("Level")
-	private Integer level;
-	
-	@JsonProperty("IsSelected")
-	private boolean isSelected;
 	
 	@JsonProperty("Tooltip")
 	private String tooltip;

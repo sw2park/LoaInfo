@@ -1,4 +1,4 @@
-package com.toy.LoaInfo.api.dto;
+package com.toy.LoaInfo.api.dto.profile;
 
 import java.util.List;
 
