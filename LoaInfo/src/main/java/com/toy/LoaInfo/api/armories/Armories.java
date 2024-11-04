@@ -63,20 +63,20 @@ public class Armories extends APIController {
 			JSONObject cardObj = (JSONObject) apiResult.get("ArmoryCard");
 			JSONObject gemObj = (JSONObject) apiResult.get("ArmoryGem");
 			JSONObject arkPassiveObj = (JSONObject) apiResult.get("ArkPassive");
-//			JSONObject colosseumObj = (JSONObject) apiResult.get("ColosseumInfo");
 			JSONArray collectObj = (JSONArray) apiResult.get("Collectibles");
+//			JSONObject colosseumObj = (JSONObject) apiResult.get("ColosseumInfo");
 			
 			// 각 메소드로 JSONObject를 넘겨준 후 DTO로 변환한다.
-//			profile(profileObj); // 완성
-//			equipment(equipObj); // 완성
-//			avatars(avatarObj); // 완성
-//			skill(skillObj); // 완성
-//			engraving(engravingObj); // 완성
-//			card(cardObj); // 완성
-//			gem(gemObj); // 완성
-//			arkPassive(arkPassiveObj); // 완성
-//			colosseum(colosseumObj);
-//			collect(collectObj); // 완성
+			profile(profileObj); // 완성
+			equipment(equipObj); // 완성
+			avatars(avatarObj); // 완성
+			skill(skillObj); // 완성
+			engraving(engravingObj); // 완성
+			card(cardObj); // 완성
+			gem(gemObj); // 완성
+			arkPassive(arkPassiveObj); // 완성
+			collect(collectObj); // 완성
+//			colosseum(colosseumObj); // 미완성
 			
 //			System.out.println("aromotyProfile = " + apiResult.get("CharacterImage").toString());
 		}

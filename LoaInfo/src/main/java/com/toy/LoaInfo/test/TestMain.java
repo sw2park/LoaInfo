@@ -5,9 +5,11 @@ import org.json.simple.parser.ParseException;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.toy.LoaInfo.api.armories.Armories;
+import com.toy.LoaInfo.api.characters.Characters;
 import com.toy.LoaInfo.api.controller.LostarkApi;
 import com.toy.LoaInfo.api.gamecontents.GameContents;
 import com.toy.LoaInfo.api.gamecontents.challengeAbyss.ChallengeAbyss;
+import com.toy.LoaInfo.api.gamecontents.challengeGuardian.ChallengeGuardian;
 
 public class TestMain {
 	public static void main(String[] args) throws JsonMappingException, JsonProcessingException, ParseException {
@@ -19,6 +21,9 @@ public class TestMain {
 		// System.out.println(m.getCharacterName().toString());
 		// }
 		
+//		Characters charApi = new Characters();
+//		charApi.characters(charName);
+		
 		//loaApi.armories(charName);
 //		Armories a = new Armories();
 //		try {
@@ -28,7 +33,10 @@ public class TestMain {
 //			e.printStackTrace();
 //		}
 		
-		ChallengeAbyss c = new ChallengeAbyss();
-		c.ChallengeAbyss();
+//		ChallengeAbyss c = new ChallengeAbyss();
+//		c.ChallengeAbyss();
+		
+		ChallengeGuardian d = new ChallengeGuardian();
+		d.ChallengeGuardian();
 	}
 }

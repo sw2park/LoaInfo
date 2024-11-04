@@ -26,8 +26,6 @@ public class GameContents extends APIController {
 		// api 호출
 		String apiData = callContentsAPI(category, cateDetail);
 		if (!apiData.contentEquals("[]")) { // API 호출 후 검색결과가 있는 경우
-			// JSONArray로 변환
-			JSONArray apiResult = (JSONArray) new JSONParser().parse(apiData);
 			ObjectMapper objMapper = new ObjectMapper();
 			
 			// 오토 매핑

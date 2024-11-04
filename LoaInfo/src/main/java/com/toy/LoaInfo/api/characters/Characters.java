@@ -8,12 +8,17 @@ import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.toy.LoaInfo.api.controller.APIController;
 import com.toy.LoaInfo.api.dto.Siblings;
+import com.toy.LoaInfo.api.gamecontents.challengeAbyss.AbyssDTO;
 
 public class Characters extends APIController {
 	// 캐릭터명으로 검색하여 원정대 내 캐릭터 정보 확인
-		public List<Siblings> characters(String _charName) throws ParseException {
+		public List<Siblings> characters(String _charName) throws ParseException, JsonMappingException, JsonProcessingException {
 			// 값전달용 리스트 선언
 			List<Siblings> siblingsList = new ArrayList<>();
 
@@ -29,20 +34,22 @@ public class Characters extends APIController {
 				JSONArray apiResult = (JSONArray) new JSONParser().parse(apiData);
 
 				for (int i = 0; i < apiResult.size(); i++) {
-					// JSONArray를 JSONObject로 변환
-					JSONObject apiResultObj = (JSONObject) apiResult.get(i);
-
-					Siblings siblingsDTO = new Siblings();
-
-					// DTO 값 세팅
-					siblingsDTO.setServerName(apiResultObj.get("ServerName").toString());
-					siblingsDTO.setCharacterName(apiResultObj.get("CharacterName").toString());
-					siblingsDTO.setCharacterLevel(Integer.parseInt(apiResultObj.get("CharacterLevel").toString()));
-					siblingsDTO.setCharacterClassName(apiResultObj.get("CharacterClassName").toString());
-					siblingsDTO.setItemMaxLevel(apiResultObj.get("ItemAvgLevel").toString());
-					siblingsDTO.setItemAvgLevel(apiResultObj.get("ItemMaxLevel").toString());
+					ObjectMapper objMapper = new ObjectMapper();
 					
-					siblingsList.add(siblingsDTO);
+					// 오토 매핑
+					siblingsList = objMapper.readValue(apiData, new TypeReference<List<Siblings>>() {});
+					
+					// 테스트 출력
+					for(Siblings aa : siblingsList) {
+						System.out.println("ServerName : " + aa.getServerName());
+						System.out.println("CharacterName : " + aa.getCharacterName());
+						System.out.println("CharacterLevel : " + aa.getCharacterLevel());
+						System.out.println("CharacterClassName : " + aa.getCharacterClassName());
+						System.out.println("ItemAvgLevel : " + aa.getItemAvgLevel());
+						System.out.println("ItemMaxLevel : " + aa.getItemMaxLevel());
+						System.out.println();
+					}
+
 				}
 			} else { // API 호출 후 검색 결과가 없는 경우
 				System.out.println("검색결과가 없습니다.");
